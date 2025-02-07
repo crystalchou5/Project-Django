@@ -1,0 +1,163 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block extra_styles %}
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        .floating_text{
+            position: absolute;  /* 讓文字漂浮 */
+            top: 9%;  /* 文字垂直居中，根據需要調整 */
+            left: 50%;  /* 文字水平居中 */
+            transform: translate(-50%, -50%);  /* 完全居中，調整偏移 */
+            color: rgba(250, 249, 249, 0.88);  /* 設置文字顏色，使其能夠在圖片上可見 */
+            font-size: 20px;  /* 根據需要設置文字大小 */
+            font-weight: bold;  /*可選，讓文字更加醒目  */
+            text-shadow: 2px 2px 4px rgba(122, 121, 121, 0.512);  /* 可選，給文字添加陰影，使其更加顯眼 */
+            white-space: nowrap;
+            letter-spacing: 5px; 
+        }
+        .title{
+            transform: translate(-50%, -50%);  /* 完全居中，調整偏移 */
+            color: rgb(61, 61, 61);  /* 設置文字顏色，使其能夠在圖片上可見 */
+            font-size: 28px;  /* 根據需要設置文字大小 */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);  /* 可選，給文字添加陰影，使其更加顯眼 */
+            white-space: nowrap;
+            letter-spacing: 2px;
+        }
+        .co{
+            border:  0px solid red;
+            width :80%;
+            position:relative;
+            left: 10%;
+            background-color: rgba(227, 230, 230, 0.872);
+        }
+        .co img{
+            padding-top:10px
+        }
+        .w{
+            color:rgb(8, 49, 18);
+            font-size: 35px;
+            letter-spacing: 2px;
+            padding:20px;
+        }
+        .n{
+            position:relative ; left:45px;
+            background-color: 
+            rgba(255, 248, 248, 0.3);
+            width: 90%; 
+            margin-bottom: 25px;
+            display: flex;      
+            gap: 20px;  
+            /* flex-wrap: wrap;  */
+        }
+        .n img{
+            margin-right: 3px;
+        }
+        .n p{
+            margin: 0;    
+            margin-top: 60px;
+        }
+        .n:hover{
+            background-color: rgb(221, 221, 221);
+        }
+        .logout{
+            width:23px;
+            height: 23px;
+            position:absolute;
+            right: 100px;  /* 距離右邊 10px */
+            bottom: 10px; /* 距離底部 10px */
+            transition: all 0.3s ease; /* 平滑過渡效果 */
+            cursor: pointer;          /* 設置鼠標為手指形狀 */
+        }
+    </style>
+{% endblock %}
+{% block index %}
+    {% if indexfrom == 'index' %}
+    <a href="/index/" class="title"><p>Moments of Tea 一盞茶時</p></a>
+    {% elif indexfrom == 'index2' %}
+    <a href="/index2/" class="title"><p>Moments of Tea 一盞茶時</p></a>
+    {%  endif %}
+{% endblock %}
+{% block login %}
+    {% if indexfrom == 'index' %}
+    <a href="/login/"><img src="{%static 'images/login.jpg'%}" alt="會員登入"  class="login" ></a>
+    <a href="/cart/"><img src="{%static 'images/shopping.jpg'%}" alt="購物車"  class="cart" ></a>
+    <a href="/mail/index/"><img src="{%static 'images/mail.png'%}" alt="mail"  class="mail" ></a>
+    {% elif indexfrom == 'index2' %}
+    <a href="/logout/"><img src="{%static 'images/logout.jpg'%}" alt="登出"  class="logout" ></a>
+    <a href="/cart2/"><img src="{%static 'images/shopping.jpg'%}" alt="購物車"  class="cart" ></a>
+    <a href="/mail/index2/"><img src="{%static 'images/mail.png'%}" alt="mail"  class="mail" ></a>
+    {%  endif %}
+{% endblock %}
+{% block unit %}
+    {% if indexfrom == 'index' %}
+    <a href="/hotproduct/index/" class="unit-button"><strong>熱銷商品</strong></a>
+    <a href="/tea/default/" class="unit-button"><strong>挑選茶葉</strong></a>
+    <a href="/orderlogin/index/" class="unit-button"><strong>訂單查詢</strong></a>
+    <a href="/aboutus/index/" class="unit-button"><strong>關於我們</strong></a>
+    {% elif indexfrom == 'index2' %}
+    <a href="/hotproduct/index2/" class="unit-button"><strong>熱銷商品</strong></a>
+    <a href="/tea2/default/" class="unit-button"><strong>挑選茶葉</strong></a>
+    <a href="/orderlogin/index2/" class="unit-button"><strong>訂單查詢</strong></a>
+    <a href="/aboutus/index2/" class="unit-button"><strong>關於我們</strong></a>
+    {%  endif %}
+{% endblock %}
+
+
+{% block content %} 
+    <span class="h">
+        <a href="/index/" ><img src="/static/images/home.jpg" alt="首頁" width="27" height="27" style="margin-top: 7px;"></a>
+        <p style="position: relative; top: -9px; display: inline;">></p>&nbsp;
+        <a href="/{{now_path}}/" style="position: relative; top: -7px; display: inline;">
+            <span >{{now_page}}</span>
+        </a>
+    </span>
+<div class="co" >
+    <div align="center" >
+        <img src="/static/images/i.jpg" alt="茶園" width="90%" height="20%">
+        <p class='floating_text'>台灣擁有獨特氣候與自然環境的島嶼，種植的茶葉在國際間享譽盛名</p>
+    </div>
+    <br/>
+    <div class="w" align="center">品牌故事</div>
+    <div class="n" >
+        <img src="/static/images/ab2.jpg"  width="400" height="300">
+        <p>
+            <span style="font-size:17.5px ;color:rgb(197, 81, 81)">每天給自己<span style="color:#1a5214">一盞茶時</span>間，品嚐茶葉的香氣，好好放鬆療癒自己</span>
+            <span style="display:block ;padding-left: 25px;padding-top:20px;font-size: 15px;">由於喜愛喝茶，享受從製茶、泡茶到喝茶的每一個過程，</span>
+            <span style="display:block ;padding-left: 25px;padding-top:10px;font-size: 15px;">期望在現代忙碌的社會下，所有人每天都能好好的坐下來，</span>
+            <span style="display:block ;padding-left: 25px;padding-top:10px;font-size: 15px;color:#1a5214">利用短暫一盞茶的時間，好好的放鬆，與內心真正的自己對話，</span>
+            <span style="display:block ;padding-left: 25px;padding-top:10px;font-size: 15px;color:#1a5214">並且享受茶農用心種植的茶葉。</span>
+        </p>
+    </div>
+    <div class="n" >
+        <img src="/static/images/tea_plantation.jpg" alt="茶園" width="400" height="300">
+        <p>
+            <span style="font-size:18px ;color:rgb(197, 81, 81);padding-left: 110px;">嚴選在地茶葉，絕不馬虎</span>
+            <span style="display:block ;padding-left: 80px;padding-top:20px;font-size: 15px;">每一片茶葉都來自台灣各地的優質茶園，</span>
+            <span style="display:block ;padding-left: 83px;padding-top:10px;font-size: 15px;color:#1a5214">我們只選擇有機茶園，製作有機茶葉，</span>
+            <span style="display:block ;padding-left: 83px;padding-top:10px;font-size: 15px;">這不僅能生產出更優質更安全的茶葉，</span>
+            <span style="display:block ;padding-left: 85px;padding-top:10px;font-size: 15px;">更能好好的保護這美好的自然環境。</span>
+        </p>
+    </div>
+    <div class="n" >
+        <img src="/static/images/about4.jpg" alt="茶葉" width="400" height="300">
+        <p>
+            <span style="font-size:18px ;color:rgb(197, 81, 81);padding-left: 110px;">專注台灣茶，守護原味純粹</span>
+            <span style="display:block ;padding-left: 10px;padding-top:20px;font-size: 14.5px;color:#1a5214">我們專注於台灣在地茶葉，致力於將這片土地上的優質茶葉帶到您的手中。</span>
+            <span style="display:block ;padding-left: 30px;padding-top:10px;font-size: 14.5px;">每一片茶葉都來自台灣最具代表性的茶區，無論是風味還是香氣，</span>
+            <span style="display:block ;padding-left: 85px;padding-top:10px;font-size: 14.5px;">都蘊含著台灣獨特的氣候與土地養育的精髓。</span>
+            <span style="display:block ;padding-left: 92px;padding-top:10px;font-size: 14.5px;">我們相信，只有最純粹、最原生的茶葉，</span>
+            <span style="display:block ;padding-left: 105px;padding-top:10px;font-size: 14.5px;">才能呈現出最真實的台灣茶風味。</span>
+        </p>
+    </div>
+    <div style="padding: 30px;"></div>
+</div>
+{% endblock %}
+{% block member %}
+    {% if indexfrom == 'index' %}
+    <span  style=" margin-right: 10px;"><a href="/member/index">會員福利</a></span>
+    {% elif indexfrom == 'index2' %}
+    <span  style=" margin-right: 10px;"><a href="/member/index2/">會員福利</a></span>
+    {% endif %}
+
+
+{% endblock %}

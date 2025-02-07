@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>訂單確認</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        .container { width: 600px; margin: 0 auto; padding: 20px; background-color: #f4f4f4; border-radius: 8px; }
+        .header { text-align: center; font-size: 24px; margin-bottom: 20px; }
+        .content { margin-bottom: 30px; }
+        .footer { text-align: center; font-size: 14px; color: #777; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>訂單確認</h1>
+            <p>親愛的 {{ customname }}，感謝您的購買！</p>
+        </div>
+
+        <div class="content">
+            <p>您的訂單編號為：{{ order_id }}，我們已經收到並開始處理您的訂單。</p>
+
+
+
+            <p><strong>總金額：</strong> {{ total }}</p>
+            <p><strong>配送地址：</strong>{{ customaddress }}</p>
+            <p><strong>預計配送時間：</strong> 預計3-5天內會送達</p>
+        </div>
+
+        <div class="footer">
+            <p>如有任何問題，請隨時聯繫我們的客服團隊。</p>
+            <p>一盞茶時 - Moment_of_tea</p>
+        </div>
+    </div>
+</body>
+</html>

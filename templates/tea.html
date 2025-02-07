@@ -1,0 +1,129 @@
+{% extends 'base.html' %}
+{%  load static%}
+{% block title %}熱銷新品{% endblock %}
+
+{% block extra_styles %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+<style>
+    .button {
+        width: 160px;  /* 設定寬度 */
+        height: 40px; 
+        color: white;  /* 文字顏色 */
+        background-color: #6a8d6c;  /* 背景顏色 */
+        border: none;  /* 移除默認的邊框 */
+        padding: 10px 20px;  /* 增加內邊距 */
+        cursor: pointer;  /* 讓鼠標變為手形 */
+        text-align: center; /* 文字居中 */
+        display: inline-block; /* 保持按鈕形狀 */
+        transition: all 0.3s ease; /* 添加過渡效果，讓變化更加平滑 */
+    }
+
+    /* 滑動到按鈕上的效果 */
+    .button:hover {
+        background-color: #43613d;  /* 改變背景顏色 */
+        text-decoration: underline;  /* 增加底線 */
+    }
+    .tea_h:hover{
+        background-color: rgb(235, 235, 235);
+        transition: background-color 0.2s ease,;
+    }
+    .h{
+            position: relative;
+            top:-7px
+    }
+    .title1{
+        transform: translate(-50%, -50%);  /* 完全居中，調整偏移 */
+        color: rgb(61, 61, 61);  /* 設置文字顏色，使其能夠在圖片上可見 */
+        font-size: 28px;  /* 根據需要設置文字大小 */
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);  /* 可選，給文字添加陰影，使其更加顯眼 */
+        white-space: nowrap;
+        letter-spacing: 2px;
+    }
+    .page{
+        position:relative;
+        top:75px;
+    }
+    .page button {
+        color:rgb(249, 247, 247);
+        background-color:rgb(105, 136, 148);
+        border-radius: 5px;
+        border:  0px;
+        font-size: 15px;
+        padding:2px 8px;
+        margin-right: 10px;
+        margin-left: 10px;
+    }
+    .page button:hover {
+        color:rgb(249, 247, 247);
+        background-color: rgb(68, 95, 105);
+        font-size:15px;
+        margin-right: 10px;
+        margin-left: 10px;
+        cursor: pointer;
+    }
+</style>
+{% endblock %}
+{% block index %}
+<a href="/index/" class="title1"><p>Moments of Tea 一盞茶時</p></a>
+{% endblock %}
+{% block login %}
+<a href="/login/"><img src="{%static 'images/login.jpg'%}" alt="會員登入"  class="login" ></a>
+<a href="/cart/"><img src="{%static 'images/shopping.jpg'%}" alt="購物車"  class="cart" ></a>
+<a href="/mail/index/"><img src="{%static 'images/mail.png'%}" alt="mail"  class="mail" ></a>
+{% endblock %}
+{% block unit %}
+<a href="/hotproduct/index/" class="unit-button"><strong>熱銷商品</strong></a>
+<a href="/tea/default/" class="unit-button"><strong>挑選茶葉</strong></a>
+<a href="/orderlogin/index/" class="unit-button"><strong>訂單查詢</strong></a>
+<a href="/aboutus/index/" class="unit-button"><strong>關於我們</strong></a>
+{% endblock %}
+
+
+{% block content %} 
+<span class="h">
+<a href="/index/" ><img src="/static/images/home.jpg" alt="首頁" width="27" height="27" style="margin-top: 7px;"></a>
+<p style="position: relative; top: -9px; display: inline;">></p>&nbsp;
+<a href="/{{now_path}}/" style="position: relative; top: -7px; display: inline;">
+    <span >{{now_page}}</span>
+</a>
+</span>
+<br>
+<div>
+    <table border="0" width="70%" align="center" cellspacing="0" >
+        <tr>
+            {% for product in products %}
+            <td style="text-align: center; padding:10px" class="tea_h">
+                <a href="/detail/{{product.id}}">
+                    <img src="/static/images/{{ product.pimage }}" width="200" height="200" alt="{{ product.pname }}">
+                </a>
+                <a href="/detail/{{product.id}}" style="color:black;text-decoration: none;">
+                    <p class="title"><strong>{{product.pname}}</strong></p>    
+                </a>
+                <p class="price">
+                    NT ${{ product.pprice }}
+                </p>
+                <button class='button' onclick="window.location='/addcart/add/{{product.id}}'">加入購物車</button>&nbsp;&nbsp;
+            </td>
+            {% if forloop.counter|divisibleby:4 %}
+        </tr><tr>
+            {% endif %}
+            {% endfor %}
+            <tr>
+                <td align="center" colspan="4" class="page">
+                    {% if page1 > 1 %}
+                    <button onclick="window.location='/tea/pre/'">上一頁</button>
+                    {% endif %}
+
+                    {% if page1 < endpage %}
+                    <button onclick="window.location='/tea/next/'">下一頁</button>
+                    {% endif %}
+                </td>
+            </tr>
+        </tr>
+    </table>
+</div>
+{% endblock %}
+{% block member %}
+    <span  style=" margin-right: 10px;"><a href="/member/index">會員福利</a></span>
+{% endblock %}
+

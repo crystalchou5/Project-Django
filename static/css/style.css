@@ -1,0 +1,90 @@
+.logo {
+    color:#b9b9b9;
+    font-size:30px;
+    font-family: 'Pacifico', cursive;
+    text-align:center;
+    position: relative; /* 絕對定位 */
+    top: 0;
+    width: 100%; 
+}
+
+
+body { 
+    background-color:	#F5F5F5 ;
+    max-width: 100%;
+    overflow-x: hidden; /* 禁止水平滾動 */
+    overflow-y: scroll; /* 確保垂直滾動可用 */
+
+}
+.unit {
+    margin-top: 20px;
+    display: flex;  /* 使用 Flexbox 排列元素 */
+    justify-content: space-around; /* 在水平方向上平均分配元素 */
+    padding: 10px 0;
+    background-color: #b2c7d1;
+    text-align: center;
+    font-family:var(--font-family-title);
+}
+.unit a {
+    color:black;
+    text-decoration: none;
+}
+
+.login{
+    position:absolute;
+    right: 90px;  /* 距離右邊 10px */
+    bottom: 1px; /* 距離底部 10px */
+    width: 40px;  /* 控制圖示大小 */
+    height: 40px; /* 控制圖示大小 */
+    transition: all 0.3s ease; /* 平滑過渡效果 */
+    cursor: pointer;          /* 設置鼠標為手指形狀 */
+}
+.cart{
+    position:absolute;
+    right: 58px;  /* 距離右邊 10px */
+    bottom: 2px; /* 距離底部 10px */
+    width: 35px;  /* 控制圖示大小 */
+    height: 35px; /* 控制圖示大小 */
+    transition: all 0.3s ease; /* 平滑過渡效果 */
+    cursor: pointer;          /* 設置鼠標為手指形狀 */
+}
+.mail{
+    position:absolute;
+    right: 10px;  /* 距離右邊 10px */
+    bottom: -2px; /* 距離底部 10px */
+    width: 50px;  /* 控制圖示大小 */
+    height: 45px; /* 控制圖示大小 */
+    transition: all 0.3s ease; /* 平滑過渡效果 */
+    cursor: pointer;          /* 設置鼠標為手指形狀 */
+}
+
+
+.unit-button:hover {
+    border-bottom: 4px solid #5c7758 /* 顯示底部邊框 */;
+}
+
+a{
+    color:black;
+    text-decoration: none;
+}
+
+.title{
+    color:#1b4519;
+    font-family: 'Pacifico', cursive;
+}
+
+
+
+.price{
+    font-size:15px;
+    font-family: 'Pacifico', cursive;
+}
+
+
+
+
+
+
+
+
+

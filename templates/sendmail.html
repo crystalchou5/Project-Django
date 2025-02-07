@@ -1,0 +1,127 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_styles %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <style>
+        .h{
+            position: relative;
+            top:-7px
+        }
+        .mail1{
+            position: relative;
+            top:15px;
+            left: -5px;
+        }
+        .contentus{
+            font-size: 24px;
+            color:rgb(54, 54, 54)
+        }
+        .contentus-c{
+            color:#005176;
+        }
+        .feedback p{
+            font-size: 14px;
+        }
+        .feedback h2{
+            color:rgb(120, 6, 6);
+        }
+        .feedback{
+            position: relative;
+            top:150px;
+        }
+        .logout{
+                width:23px;
+                height: 23px;
+                position:absolute;
+                right: 100px;  /* 距離右邊 10px */
+                bottom: 10px; /* 距離底部 10px */
+                transition: all 0.3s ease; /* 平滑過渡效果 */
+                cursor: pointer;          /* 設置鼠標為手指形狀 */
+            }
+            .title1{
+                transform: translate(-50%, -50%);  /* 完全居中，調整偏移 */
+                color: rgb(61, 61, 61);  /* 設置文字顏色，使其能夠在圖片上可見 */
+                font-size: 28px;  /* 根據需要設置文字大小 */
+                text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);  /* 可選，給文字添加陰影，使其更加顯眼 */
+                white-space: nowrap;
+                letter-spacing: 2px;
+            }
+    </style>
+{% endblock %}
+
+{% block index %}
+    {% if indexfrom == 'index' %}
+    <a href="/index/" class="title1"><p>Moments of Tea 一盞茶時</p></a>
+    {% elif indexfrom == 'index2' %}
+    <a href="/index2/" class="title1"><p>Moments of Tea 一盞茶時</p></a>
+    {% endif %}
+{% endblock %}
+
+{% block login %}
+    {% if indexfrom == 'index' %}
+    <a href="/login/"><img src="{%static 'images/login.jpg'%}" alt="會員登入"  class="login" ></a>
+    <a href="/cart/"><img src="{%static 'images/shopping.jpg'%}" alt="購物車"  class="cart" ></a>
+    <a href="/mail/index/"><img src="{%static 'images/mail.png'%}" alt="mail"  class="mail" ></a>
+    {% elif indexfrom == 'index2' %}
+    <a href="/logout/"><img src="{%static 'images/logout.jpg'%}" alt="登出"  class="logout" ></a>
+    <a href="/cart2/"><img src="{%static 'images/shopping.jpg'%}" alt="購物車"  class="cart" ></a>
+    <a href="/mail/index2/"><img src="{%static 'images/mail.png'%}" alt="mail"  class="mail" ></a>
+    {% endif %}
+
+{% endblock %}
+
+{% block unit %}
+    {% if indexfrom == 'index' %}
+    <a href="/hotproduct/index/" class="unit-button"><strong>熱銷商品</strong></a>
+    <a href="/tea/default/" class="unit-button"><strong>挑選茶葉</strong></a>
+    <a href="/orderlogin/index/" class="unit-button"><strong>訂單查詢</strong></a>
+    <a href="/aboutus/index/" class="unit-button"><strong>關於我們</strong></a>
+    {% elif indexfrom == 'index2' %}
+    <a href="/hotproduct/index2/" class="unit-button"><strong>熱銷商品</strong></a>
+    <a href="/tea2/default/" class="unit-button"><strong>挑選茶葉</strong></a>
+    <a href="/orderlogin/index2/" class="unit-button"><strong>訂單查詢</strong></a>
+    <a href="/aboutus/index2/" class="unit-button"><strong>關於我們</strong></a>
+    {% endif %}
+
+{% endblock %}
+
+{% block content %}
+    {% if indexfrom == 'index' %}
+    <span class="h">
+        <a href="/index/" ><img src="/static/images/home.jpg" alt="首頁" width="27" height="27" style="margin-top: 7px;"></a>
+        <p style="position: relative; top: -9px; display: inline;">></p>&nbsp;
+        <a href="/mail/index" style="position: relative; top: -7px; display: inline;">
+            <img src="/static/images/mail.png" alt="mail" width="43" height="43" class="mail1">
+            <span style="position: relative; top:-2px;left: -15px;">mail</span>
+            <p style="position: relative; top: -3px;left: -8px; display: inline;">></p>&nbsp;
+            <p style="position: relative; top: -2px;left: -8px; display: inline;">已發送mail</p>&nbsp;
+        </a>
+    </span>
+    {% elif indexfrom == 'index2' %}
+    <span class="h">
+        <a href="/index2/" ><img src="/static/images/home.jpg" alt="首頁" width="27" height="27" style="margin-top: 7px;"></a>
+        <p style="position: relative; top: -9px; display: inline;">></p>&nbsp;
+        <a href="/mail/index2" style="position: relative; top: -7px; display: inline;">
+            <img src="/static/images/mail.png" alt="mail" width="43" height="43" class="mail1">
+            <span style="position: relative; top:-2px;left: -15px;">mail</span>
+            <p style="position: relative; top: -3px;left: -8px; display: inline;">></p>&nbsp;
+            <p style="position: relative; top: -2px;left: -8px; display: inline;">已發送mail</p>&nbsp;
+        </a>
+    </span>
+    {% endif %}
+    <div align="center" class="feedback">
+        <h2>
+            已收到您的意見反饋，我們將會盡快處理！</h2>
+        <p>感謝您的意見，您的意見能使一盞茶時變得更好。</p>
+        <p>我們最晚會於一周內回信，再請您耐心等候，謝謝您。</p>
+    </div>
+    <div style="margin-bottom: 240px;"></div>
+{% endblock %}
+{% block member %}
+    {% if indexfrom == 'index' %}
+    <span  style=" margin-right: 10px;"><a href="/member/index">會員福利</a></span>
+    {% elif indexfrom == 'index2' %}
+    <span  style=" margin-right: 10px;"><a href="/member/index2/">會員福利</a></span>
+    {% endif %}
+{% endblock %}

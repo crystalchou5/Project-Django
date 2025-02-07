@@ -1,0 +1,143 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_styles %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <style>
+        .h{
+            position: relative;
+            top:-7px
+        }
+        .mail1{
+            position: relative;
+            top:15px;
+            left: -5px;
+        }
+        .contentus{
+            font-size: 24px;
+            color:rgb(54, 54, 54)
+        }
+        .contentus-c{
+            color:rgb(168, 8, 8);
+            font-size: 16px;
+        }
+        .button {
+                display: flex;                /* 使用 Flexbox 讓按鈕排成一行 */
+                justify-content: center;      /* 可以根據需要調整位置，比如居中對齊 */
+                gap: 30px;                    /* 設定按鈕之間的距離，這裡設為 20px，你可以根據需要調整 */
+                width: 100%;                  /* 容器寬度佔滿父容器 */
+                align-items: center;          /* 按鈕垂直居中對齊 */
+            }
+
+        .button input {
+            padding: 10px 20px;           /* 按鈕的內邊距 */
+            font-size: 13px;               /* 按鈕文字大小 */
+            border: 1px solid #ccc; 
+            border-radius: 5px;
+            transition: all 0.3s ease; 
+            cursor: pointer;   
+        }
+        .button input:hover {
+            background-color:#57889f;
+            color:#f6f6f6;
+            
+        }
+        .member a{
+            font-size: 14px;
+        }
+        .member a:hover{
+            color:rgb(168, 8, 8);
+        }
+        .title{
+            transform: translate(-50%, -50%);  /* 完全居中，調整偏移 */
+            color: rgb(61, 61, 61);  /* 設置文字顏色，使其能夠在圖片上可見 */
+            font-size: 28px;  /* 根據需要設置文字大小 */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);  /* 可選，給文字添加陰影，使其更加顯眼 */
+            white-space: nowrap;
+            letter-spacing: 2px;
+        }
+        .googlelogin{
+                border:1px solid rgb(69, 67, 67);   
+        }
+    </style>
+{% endblock %}
+{% block index %}
+<a href="/index/" class="title"><p>Moments of Tea 一盞茶時</p></a>
+{% endblock %}
+{% block login %}
+<a href="/login/"><img src="{%static 'images/login.jpg'%}" alt="會員登入"  class="login" ></a>
+<a href="/cart/"><img src="{%static 'images/shopping.jpg'%}" alt="購物車"  class="cart" ></a>
+<a href="/mail/index/"><img src="{%static 'images/mail.png'%}" alt="mail"  class="mail" ></a>
+{% endblock %}
+{% block unit %}
+<a href="/hotproduct/index/" class="unit-button"><strong>熱銷商品</strong></a>
+<a href="/tea/default/" class="unit-button"><strong>挑選茶葉</strong></a>
+<a href="/orderlogin/index/" class="unit-button"><strong>訂單查詢</strong></a>
+<a href="/aboutus/index" class="unit-button"><strong>關於我們</strong></a>
+{% endblock %}
+
+{% block content %}
+    <span class="h">
+        <a href="/index/" ><img src="/static/images/home.jpg" alt="首頁" width="27" height="27" style="margin-top: 7px;"></a>
+        <p style="position: relative; top: -9px; display: inline;">></p>&nbsp;
+        <span style="position: relative; top: -7px; display: inline;" >忘記密碼</span>
+        <p style="position: relative; top: -9px; display: inline;">></p>&nbsp;
+        <span style="position: relative; top: -7px; display: inline;" >驗證碼</span>
+        <p style="position: relative; top: -9px; display: inline;">></p>&nbsp;
+        <a href="/changepw/" style="position: relative; top: -7px; display: inline;">
+            <span >變更密碼</span>
+        </a>
+    </span>
+    <div>
+        <table border="0" width="40%" align="center" cellspacing="10" >
+            <form action="." method="POST" name="form1">
+                {% csrf_token %}
+            <tr align="center" class="contentus">
+                <td colspan="2">
+                    <strong>變更密碼</strong>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2"><hr/></td>
+            </tr>
+            <tr align="center" class="contentus-c">
+                <td colspan="2">
+                    請於下方輸入變更密碼
+                </td>
+            </tr>
+            <tr></tr><tr></tr><tr></tr><tr></tr>
+            <tr>
+                <td width="25%">密碼</td>
+                <td><input type="password" name="c_password" size="30" ></td>
+            </tr>
+            <tr>
+                <td width="25%">確認密碼</td>
+                <td><input type="password" name="c_confirm_password" size="30" ></td>
+            </tr>
+            <tr></tr><tr></tr><tr></tr>
+            <tr>
+                <td>驗證碼</td>
+                <td>{{form.captcha}}</td>
+            </tr>
+            <tr></tr>
+            <tr>
+                <td colspan="2" style="color:red;font-size: 16px;" align="center">
+                    {{message}}
+                </td>
+            </tr>
+            <tr></tr>
+            <tr></tr>
+            <tr>
+                <td colspan="2">
+                    <span class="button">
+                    <input type="submit" name="submit" value="提交" >
+                    </span>
+                </td>
+            </tr>
+        </form>
+        </table>
+    </div>
+{% endblock %}
+{% block member %}
+    <span  style=" margin-right: 10px;"><a href="/member/index">會員福利</a></span>
+{% endblock %}

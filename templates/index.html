@@ -1,0 +1,176 @@
+{% extends 'base.html' %}
+{%  load static %}
+{% block title %}熱銷新品{% endblock %}
+
+{% block extra_styles %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+<style>
+    .button {
+        width: 160px;  /* 設定寬度 */
+        height: 40px; 
+        color: white;  /* 文字顏色 */
+        background-color: #6a8d6c;  /* 背景顏色 */
+        border: none;  /* 移除默認的邊框 */
+        padding: 10px 20px;  /* 增加內邊距 */
+        cursor: pointer;  /* 讓鼠標變為手形 */
+        text-align: center; /* 文字居中 */
+        display: inline-block; /* 保持按鈕形狀 */
+        transition: all 0.3s ease; /* 添加過渡效果，讓變化更加平滑 */
+    }
+
+    /* 滑動到按鈕上的效果 */
+    .button:hover {
+        background-color: #43613d;  /* 改變背景顏色 */
+        text-decoration: underline;  /* 增加底線 */
+    }
+    .floating_text{
+        position: absolute;  /* 讓文字漂浮 */
+        top: 41%;  /* 文字垂直居中，根據需要調整 */
+        left: 20%;  /* 文字水平居中 */
+        transform: translate(-50%, -50%);  /* 完全居中，調整偏移 */
+        color: rgb(61, 61, 61);  /* 設置文字顏色，使其能夠在圖片上可見 */
+        font-size: 22px;  /* 根據需要設置文字大小 */
+        font-weight: bold;  /*可選，讓文字更加醒目  */
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);  /* 可選，給文字添加陰影，使其更加顯眼 */
+        white-space: nowrap;
+        letter-spacing: 8px; 
+    }
+    .floating_text2{
+        position: absolute;  /* 讓文字漂浮 */
+        top: 47%;  /* 文字垂直居中，根據需要調整 */
+        left: 20%;  /* 文字水平居中 */
+        transform: translate(-50%, -50%);  /* 完全居中，調整偏移 */
+        color: rgb(61, 61, 61);  /* 設置文字顏色，使其能夠在圖片上可見 */
+        font-size: 22px;  /* 根據需要設置文字大小 */
+        font-weight: bold;  /*可選，讓文字更加醒目  */
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);  /* 可選，給文字添加陰影，使其更加顯眼 */
+        white-space: nowrap;
+        letter-spacing: 8px; 
+    }
+    .t{
+        position: relative;
+        left:100px;
+    }
+    .p{
+        position: relative;
+        top:-50px;
+        left:100px;
+    }
+    .t2{
+        position: relative;
+        right:-350px;
+    }
+    .p2{
+        position: relative;
+        top:-60px;
+        left:350px;
+    }
+    .t3{
+        position: relative;
+        right:-310px;
+    }
+    .pick span{
+        padding:2px;
+        color:rgb(14, 99, 14);
+        font-size: 20px;
+        font-family: "LXGW WenKai TC", serif;
+        font-weight: 400;
+        font-style: normal;
+        border-bottom: 2px solid rgb(7, 60, 7);
+    }
+    .pick{
+        position:relative;
+        bottom: -50px;
+    }
+    .pick span:hover{
+        padding:2px;
+        border-bottom: 2px solid rgb(7, 60, 7);
+        color: rgb(7, 60, 7);
+        font-size: 21px;
+    }
+    .p3{
+        position:relative;
+        top:-63px;
+        left:100px;
+    }
+    .tea_h:hover{
+        background-color: rgb(232, 230, 230);
+        transition: background-color 0.1s ease,;
+    }
+    .tit{
+        padding:2px;
+        color:rgb(14, 99, 14);
+        font-size: 36px;
+        font-family: "LXGW WenKai TC", serif;
+        font-weight: 400;
+        font-style: normal;
+        position: relative;
+        top:25px;
+        letter-spacing: 5px;
+    }
+    .title{
+        transform: translate(-50%, -50%);  /* 完全居中，調整偏移 */
+        color: rgb(61, 61, 61);  /* 設置文字顏色，使其能夠在圖片上可見 */
+        font-size: 28px;  /* 根據需要設置文字大小 */
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);  /* 可選，給文字添加陰影，使其更加顯眼 */
+        white-space: nowrap;
+        letter-spacing: 2px;
+    }
+</style>
+{% endblock %}
+{% block index %}
+<a href="/index/" class="title"><p>Moments of Tea 一盞茶時</p></a>
+{% endblock %}
+{% block login %}
+<a href="/login/"><img src="{%static 'images/login.jpg'%}" alt="會員登入"  class="login" ></a>
+<a href="/cart/"><img src="{%static 'images/shopping.jpg'%}" alt="購物車"  class="cart" ></a>
+<a href="/mail/index/"><img src="{%static 'images/mail.png'%}" alt="mail"  class="mail" ></a>
+{% endblock %}
+{% block unit %}
+<a href="/hotproduct/index/" class="unit-button"><strong>熱銷商品</strong></a>
+<a href="/tea/default/" class="unit-button"><strong>挑選茶葉</strong></a>
+<a href="/orderlogin/index/" class="unit-button"><strong>訂單查詢</strong></a>
+<a href="/aboutus/index/" class="unit-button"><strong>關於我們</strong></a>
+{% endblock %}
+
+
+{% block content %} 
+<div >
+    <img src="{% static 'images/about_t.jpg' %}" alt="茶葉" width="100%" height="650" style="position: relative;">
+    <p class='floating_text'>嚴選頂級的台灣在地茶葉</p>
+    <p class='floating_text2'>喝的到茶葉獨特香氣</p>
+</div>
+<div align="center" class="tit">
+    每款茶葉的口感及特色
+</div>
+<br/><br/><br/>
+    <div class="tea_h">
+        <img src="{% static 'images/t.jpg'%}" alt="鐵觀音" width="30%" height="30%" class="t">  
+        <img src="{% static 'images/p.jpg' %}" alt="" width="30%" height="30%" class="p">
+    </div>
+    <div class="tea_h">
+        <img src="{% static 'images/p2.jpg' %}" alt="" width="30%" height="30%" class="p2">
+        <img src="{% static 'images/t2.jpg' %}" alt="凍頂烏龍茶" width="30%" height="30%" class="t2">  
+    </div>
+    <div class="tea_h">
+        <img src="{% static 'images/t3.jpg' %}" alt="高山烏龍茶" width="38%" height="38%" class="t" >  
+        <img src="{% static 'images/p3.jpg' %}" alt="" width="30%" height="30%" class="p3">
+    </div>
+    <div class="tea_h">
+        <img src="{% static 'images/p4.jpg' %}" alt="" width="30%" height="30%" class="p2">
+        <img src="{% static 'images/t4.jpg' %}" alt="日月潭紅茶" width="38%" height="38%" class="t3">  
+    </div>
+
+
+<br/>
+<div>
+        <div align="center" class="pick">
+            <a href="/tea/default/"><span>去挑選喜歡的茶葉 ➮</span></a>
+        </div>
+</div>
+
+{% endblock %}
+{% block member %}
+    <span  style=" margin-right: 10px;"><a href="/member/index">會員福利</a></span>
+{% endblock %}

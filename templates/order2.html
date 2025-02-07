@@ -1,0 +1,267 @@
+{% extends 'base.html' %}
+{% load static %}
+    {% block extra_styles %}
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+        <style>
+            .name{
+                position: relative;
+                top: -50px;
+            }
+            .x{
+                color:rgb(42, 40, 40);
+                text-decoration: none;
+            }
+            .x:hover{
+                color:rgb(104, 103, 103);
+            }
+            .con{
+                background-color: #e7e7e7;;
+                position: relative;
+                top: 30px;
+            }
+            .no-border{
+                border: none;
+            }
+            .t{
+                font-size: 20px;
+                background-color:rgba(166, 128, 128, 0.799);
+                color:rgb(38, 37, 37)
+            }
+
+            .u{
+                background-color: rgba(203, 157, 157, 0.687);
+                color:rgb(234, 235, 236)
+            }
+            .co{
+                background-color:rgb(223, 223, 222);
+            }
+            .s{
+                font-size: 15px;
+                font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+            }
+            #grandt{
+                color:rgb(214, 42, 42);
+            }
+            #grandtotal{
+                color:rgb(214, 42, 42);
+            }
+            /* 通用樣式：移除數字輸入框的上下箭頭 */
+            input[type="number"] {
+                appearance: textfield; /* 移除大多數瀏覽器的上下箭頭 */
+                -moz-appearance: textfield; /* Firefox */
+                -webkit-appearance: textfield; /* WebKit-based browsers */
+            }
+
+            /* 移除 WebKit 瀏覽器 (Chrome、Safari) 的內建箭頭 */
+            input[type="number"]::-webkit-inner-spin-button,
+            input[type="number"]::-webkit-outer-spin-button {
+                -webkit-appearance: none; 
+                margin: 0; /* 移除可能的多餘間距 */
+            }
+
+            /* 確保 Mozilla 瀏覽器 (Firefox) 的箭頭也被移除 */
+            input[type="number"]::-moz-inner-spin-button,
+            input[type="number"]::-moz-outer-spin-button {
+                appearance: none;
+                margin: 0;
+            }
+            .button-container {
+                display: flex;                /* 使用 Flexbox 讓按鈕排成一行 */
+                justify-content: center;      /* 可以根據需要調整位置，比如居中對齊 */
+                gap: 30px;                    /* 設定按鈕之間的距離，這裡設為 20px，你可以根據需要調整 */
+                width: 100%;                  /* 容器寬度佔滿父容器 */
+                align-items: center;          /* 按鈕垂直居中對齊 */
+            }
+
+            .button-container input {
+                padding: 10px 20px;           /* 按鈕的內邊距 */
+                font-size: 13px;               /* 按鈕文字大小 */
+                border: 1px solid #ccc; 
+                border-radius: 5px;
+                transition: all 0.3s ease; 
+                cursor: pointer;   
+            }
+            .button-container input:hover {
+                background-color: rgba(166, 128, 128, 0.799);
+                color:#f6f6f6;
+                
+            }
+            .cart1{
+                position: relative;
+                top: 10px;
+            }
+            .step  {
+                background-color: rgba(166, 128, 128, 0.799);
+                
+            }
+            .shoplist{
+                font-size: 22px;
+                position: relative;
+                left: -210px;
+                top: -10px;
+                color:rgb(199, 197, 197);
+            }
+            .logout{
+                width:23px;
+                height: 23px;
+                position:absolute;
+                right: 100px;  /* 距離右邊 10px */
+                bottom: 10px; /* 距離底部 10px */
+                transition: all 0.3s ease; /* 平滑過渡效果 */
+                cursor: pointer;          /* 設置鼠標為手指形狀 */
+            }
+            .title{
+                transform: translate(-50%, -50%);  /* 完全居中，調整偏移 */
+                color: rgb(61, 61, 61);  /* 設置文字顏色，使其能夠在圖片上可見 */
+                font-size: 28px;  /* 根據需要設置文字大小 */
+                text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);  /* 可選，給文字添加陰影，使其更加顯眼 */
+                white-space: nowrap;
+                letter-spacing: 2px;
+            }
+        </style>
+    {% endblock %}
+    {% block index %}
+    <a href="/index2/" class="title"><p>Moments of Tea 一盞茶時</p></a>
+    {% endblock %}
+    {% block login %}
+    <a href="/logout/"><img src="{%static 'images/logout.jpg'%}" alt="登出"  class="logout" ></a>
+    <a href="/cart2/"><img src="{%static 'images/shopping.jpg'%}" alt="購物車"  class="cart" ></a>
+    <a href="/mail/index2/"><img src="{%static 'images/mail.png'%}" alt="mail"  class="mail" ></a>
+    {% endblock %}
+    {% block unit %}
+    <a href="/hotproduct/index2/" class="unit-button"><strong>熱銷商品</strong></a>
+    <a href="/tea2/default/" class="unit-button"><strong>挑選茶葉</strong></a>
+    <a href="/orderlogin/index2/" class="unit-button"><strong>訂單查詢</strong></a>
+    <a href="/aboutus/index2/" class="unit-button"><strong>關於我們</strong></a>
+    {% endblock %}
+    {% block content %}
+    <span>
+        <a href="/index2/" ><img src="/static/images/home.jpg" alt="首頁" width="27" height="27" style="margin-top: 7px;"></a>
+        <p style="position: relative; top: -9px; display: inline;">></p>&nbsp;
+        <a href="/cart2/" style="position: relative; top: -7px; display: inline;">
+            <img src="/static/images/shopping.jpg/" alt="購物車" width="30" height="30" class="cart1">
+            購物車
+        </a>
+    </span>
+    <span align="center">
+        <p class="step"> 
+            <span style="position: relative;left:-50px;top:3px">
+                <a href="/cart2/"><img src="/static/images/step1d.jpg" width="110" height="35" alt="購物清單"></a>
+            </span>
+            <span style="position: relative; right:-165px;top:-8px;color:rgb(58, 57, 57)">▶</span>&nbsp; 
+            <span style="position: relative;left:-20px;top: 3px;">
+                <img src="/static/images/step2.jpg" width="140" height="38" alt="填寫付款資料"></span>
+            <span style="position: relative; left: -200px;top:-9px;color:rgb(58, 57, 57)">▶</span>&nbsp;
+            <span style="position: relative;top: 2px;">
+                <img src="/static/images/step3d.jpg" width="100" height="35" alt="完成訂購"></span>
+        </p> 
+    </span>
+        <form action="/ok2/" method="POST" name="form3">
+            {% csrf_token %}
+        <div class="content">
+            <table border="0" width="60%" align="center" cellpadding="2" cellspacing="8"  class="con">
+                <tr>
+                    <th colspan="5" align="center" class="t">購物車 SHOPPING CART</th>
+                </tr>
+                <tr></tr>
+                <tr align="center" >
+                    <td class="u">商品圖片</td>
+                    <td class="u">商品名稱</td>
+                    <td class="u">數量</td>
+                    <td class="u">單價</td>
+                    <td class="u">刪除</td>
+                </tr>
+                {% for unit in cartlist2 %}
+                    <tr class="co">                    
+                        <td align="center">
+                            <img src="/static/images/{{unit.2}}/" alt="{{unit.1}}" width="100" height="100">
+                           
+                        </td>
+                        <td align="center">
+                            {{unit.1}}
+                        </td>
+                        <td align="center">{{unit.4}}</td>
+                        <td align="center">{{unit.3}}</td>
+                        <td align="center">
+                            <a href="/addcart/remove/{{unit.0}}" class="x">X</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                    <tr class="no-border">
+                        <td  colspan="3" align="right">小計</td>
+                        <td colspan="2" align="right" class="s">${{total_m}}</td>
+                    </tr>
+                    <tr class="no-border">
+                        <td  colspan="3" align="right">運費</td>
+                        <td  colspan="2" align="right" class="s">${{shipping}}</td>
+                    </tr>
+                    <tr class="no-border">
+                        {% if total_m == 0 %}
+                        <td  colspan="3" align="right" id="grandt">總金額</td>
+                        <td colspan="2"  align="right" class="s" id="grandtotal">$ 0</td>  
+                        {% elif total_m > 0%}
+                        <td  colspan="3" align="right" id="grandt">總金額</td>
+                        <td colspan="2"  align="right" class="s" id="grandtotal">${{grandtotal_m}}</td>
+                        {% endif %}
+                    </tr>
+            </table>
+            <table border="0" width="60%" align="center" cellpadding="2" cellspacing="9"  class="con">
+                <tr>
+                    <th colspan="5" align="center" class="t">訂購資料 Order Information</th>
+                </tr>
+                <tr align="center">
+                    <td colspan="5" style="color:rgb(205, 24, 24)">請確認訂購商品是否正確！</td>
+                </tr>
+                <tr>
+                    <td style="position: relative;left: 28px;"><strong>姓名</strong></td>
+                    <td style="position: relative;left: 10px;"><strong>電話</strong></td>
+                </tr>
+                <tr>
+                    <td style="position: relative;left: 25px;">
+                    <input type="text" name="member_name"  value="{{member_name}}" size="45"required style=" background-color:rgb(246, 246, 246);border: 1px solid rgb(226, 224, 224); border-radius: 5px; padding: 5px;">
+                    </td>
+                    <td style="position: relative;left: 10px;">
+                        <input type="text" name="member_phone"  size="45" required style=" background-color:rgb(246, 246, 246);border: 1px solid rgb(226, 224, 224); border-radius: 5px; padding: 5px;">
+                    </td>
+                </tr>
+                <tr>
+                    <td style="position: relative;left: 28px;"><strong>地址</strong></td>
+                    <td style="position: relative;left: 10px;"><strong>email</strong></td>
+                </tr>
+                <tr>
+                    <td style="position: relative;left: 25px;">
+                    <input type="text" name="member_address"  size="45" required style=" background-color:rgb(246, 246, 246);border: 1px solid rgb(226, 224, 224); border-radius: 5px; padding: 5px;">
+                    </td>
+                    <td style="position: relative;left: 10px;">
+                        <input type="text" name="member_email"  value="{{member_email}}"size="45"required style=" background-color:rgb(246, 246, 246);border: 1px solid rgb(226, 224, 224); border-radius: 5px; padding: 5px;">
+                    </td>
+                </tr>
+                <tr>
+                    <td style="position: relative;left: 28px;top:5px">
+                        <strong>付款方式</strong>
+                        <span style="position: relative; left:30px">
+                        <input type="radio" name="paytype" value="ATM轉帳" checked="checked">ATM轉帳&nbsp;&nbsp;
+                        <input type="radio" name="paytype" value="郵政劃撥">郵政劃撥
+                        </span>
+                    </td>
+                </tr>
+                <tr></tr>
+                <tr></tr>
+                <tr>
+                    <td colspan="2">
+                    <div class="button-container">
+                        <input type="button" id="home" name="home" onclick="window.location='/index2/'" value="繼續購物">
+                        <input type="button" id="cart" name="cart" onclick="window.location='/cart2/'" value="回上一頁">
+                        <input type="submit" id="submit" name="submit" value="確認送出" style="color:rgb(200, 18, 18)">
+                    </div>
+                    </td> 
+                </tr>
+                <tr></tr>
+            </table>    
+        </div>
+        </form>
+        <br/><br/><br/><br/>
+    {% endblock %}
+    {% block member %}
+    <span  style=" margin-right: 10px;"><a href="/member/index2/">會員福利</a></span>
+    {% endblock %}

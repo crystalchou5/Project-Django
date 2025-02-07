@@ -1,0 +1,253 @@
+{% extends 'base.html' %}
+{%  load static%}
+{% block title %}熱銷新品{% endblock %}
+
+{% block extra_styles %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+<style>
+    .button {
+        width: 160px;  /* 設定寬度 */
+        height: 40px; 
+        color: white;  /* 文字顏色 */
+        background-color: #6a8d6c;  /* 背景顏色 */
+        border: none;  /* 移除默認的邊框 */
+        padding: 10px 20px;  /* 增加內邊距 */
+        cursor: pointer;  /* 讓鼠標變為手形 */
+        text-align: center; /* 文字居中 */
+        display: inline-block; /* 保持按鈕形狀 */
+        transition: all 0.3s ease; /* 添加過渡效果，讓變化更加平滑 */
+    }
+
+    /* 滑動到按鈕上的效果 */
+    .button:hover {
+        background-color: #43613d;  /* 改變背景顏色 */
+        text-decoration: underline;  /* 增加底線 */
+    }
+    .floating_text{
+        position: absolute;  /* 讓文字漂浮 */
+        top: 41%;  /* 文字垂直居中，根據需要調整 */
+        left: 20%;  /* 文字水平居中 */
+        transform: translate(-50%, -50%);  /* 完全居中，調整偏移 */
+        color: rgb(61, 61, 61);  /* 設置文字顏色，使其能夠在圖片上可見 */
+        font-size: 22px;  /* 根據需要設置文字大小 */
+        font-weight: bold;  /*可選，讓文字更加醒目  */
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);  /* 可選，給文字添加陰影，使其更加顯眼 */
+        white-space: nowrap;
+        letter-spacing: 8px; 
+    }
+    .floating_text2{
+        position: absolute;  /* 讓文字漂浮 */
+        top: 47%;  /* 文字垂直居中，根據需要調整 */
+        left: 20%;  /* 文字水平居中 */
+        transform: translate(-50%, -50%);  /* 完全居中，調整偏移 */
+        color: rgb(61, 61, 61);  /* 設置文字顏色，使其能夠在圖片上可見 */
+        font-size: 22px;  /* 根據需要設置文字大小 */
+        font-weight: bold;  /*可選，讓文字更加醒目  */
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);  /* 可選，給文字添加陰影，使其更加顯眼 */
+        white-space: nowrap;
+        letter-spacing: 8px; 
+    }
+    .t{
+        position: relative;
+        left:100px;
+    }
+    .p{
+        position: relative;
+        top:-50px;
+        left:100px;
+    }
+    .t2{
+        position: relative;
+        right:-350px;
+    }
+    .p2{
+        position: relative;
+        top:-60px;
+        left:350px;
+    }
+    .t3{
+        position: relative;
+        right:-310px;
+    }
+    .pick span{
+        padding:2px;
+        color:rgb(14, 99, 14);
+        font-size: 20px;
+        font-family: "LXGW WenKai TC", serif;
+        font-weight: 400;
+        font-style: normal;
+        border-bottom: 2px solid rgb(7, 60, 7);
+    }
+    .pick{
+        position:relative;
+        bottom: -50px;
+    }
+    .pick span:hover{
+        padding:2px;
+        border-bottom: 2px solid rgb(7, 60, 7);
+        color: rgb(7, 60, 7);
+        font-size: 21px;
+    }
+    .p3{
+        position:relative;
+        top:-63px;
+        left:100px;
+    }
+    .tea_h:hover{
+        background-color: rgb(232, 230, 230);
+        transition: background-color 0.1s ease,;
+    }
+    .logout{
+        width:23px;
+        height: 23px;
+        position:absolute;
+        right: 10px;  /* 距離右邊 10px */
+        bottom: 10px; /* 距離底部 10px */
+        transition: all 0.3s ease; /* 平滑過渡效果 */
+        cursor: pointer;          /* 設置鼠標為手指形狀 */
+    }
+    .tit{
+        padding:2px;
+        color:rgb(14, 99, 14);
+        font-size: 36px;
+        font-family: "LXGW WenKai TC", serif;
+        font-weight: 400;
+        font-style: normal;
+        position: relative;
+        top:25px;
+        letter-spacing: 5px;
+    }
+    .button-container input {
+                padding: 8px 15px;           /* 按鈕的內邊距 */
+                font-size: 13px;               /* 按鈕文字大小 */
+                border: 1px solid #ccc; 
+                border-radius: 5px;
+                transition: all 0.3s ease; 
+                cursor: pointer;   
+                margin-left: 20px;
+            }
+    .button-container input:hover {
+        background-color: #667b84;
+        color:#f6f6f6;
+        
+    }
+    .title{
+        transform: translate(-50%, -50%);  /* 完全居中，調整偏移 */
+        color: rgb(61, 61, 61);  /* 設置文字顏色，使其能夠在圖片上可見 */
+        font-size: 28px;  /* 根據需要設置文字大小 */
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);  /* 可選，給文字添加陰影，使其更加顯眼 */
+        white-space: nowrap;
+        letter-spacing: 2px;
+    }
+    footer{
+            background-color:#b2c7d1;
+            padding: 40px 20px;
+            text-align: center;
+        }
+    .p-tit{
+        color:rgb(51, 51, 51);
+        font-size: 20px;
+        position: relative;
+    }
+    .p-del{
+        font-size: 13px;
+        position:absolute;
+        top:15px;
+        right: 20px;
+        color:rgb(208, 15, 15);
+    }
+    .p-del:hover{
+        color:rgb(149, 10, 10);
+        cursor: pointer;
+    }
+</style>
+{% endblock %}
+{% block index %}
+<a href="/seller_manage/" class="title"><p>Moments of Tea 一盞茶時<span style="font-size: 25px;color: rgb(195, 70, 70);">(管理介面)</span></p></a>
+{% endblock %}
+{% block login %}
+<a href="/logout/"><img src="{%static 'images/logout.jpg'%}" alt="登出"  class="logout" ></a>
+{% endblock %}
+{% block unit %}
+<a href="/seller_manage/product/" class="unit-button"><strong>商品管理</strong></a>
+<a href="/seller_manage/order/" class="unit-button"><strong>訂單管理</strong></a>
+{% endblock %}
+
+
+{% block content %}
+<span>
+    <a href="/seller_manage/" ><img src="/static/images/home.jpg" alt="首頁" width="27" height="27" style="margin-top: 7px;"></a>
+    <p style="position: relative; top: -9px; display: inline;">></p>&nbsp;
+    <a href="/{{now_path}}/" style="position: relative; top: -7px; display: inline;">{{now_page}}</a>
+    <p style="position: relative; top: -9px; display: inline;">></p>&nbsp;
+    <a href="/edit_product/{{product.id}}" style="position: relative; top: -7px; display: inline;">商品資訊    </a>
+</span> 
+    <div style='margin-top: 50px;'>
+        <table border="1" width="50%" align="center" cellspacing="0" cellpadding="5" >
+            <form action="." method="POST" name="form3">
+                {% csrf_token %}
+            <tr align="center">
+                <td colspan="2" class="p-tit">
+                    <strong>商品資訊</strong>
+                    <a href="/edit_product/{{product.id}}/delete/"><span class="p-del">(刪除商品)</span></a>
+                </td>
+            </tr>
+            <tr>
+                <td width="200">商品名稱</td>
+                <td>
+                    <input type="text" value="{{product.pname}}" name="name">
+                </td>   
+            </tr>
+            <tr>
+                <td>商品照片：</td>
+                <td>
+                    <img src="/static/images/{{ product.pimage }}" width="100" height="100">
+                    <input type="text" value="{{product.pimage}}" name="image">
+                </td>   
+            </tr>
+            <tr>
+                <td>商品價格：</td>
+                <td>
+                    <input type="text" value="{{product.pprice}}" name="price">
+                </td>   
+            </tr>
+            <tr>
+                <td>會員商品價格：</td>
+                <td>
+                    <input type="text" value="{{product.member_price}}" name="m_price">
+                </td>   
+            </tr>
+            <tr>
+                <td>商品描述：</td>
+                <td>
+                    <textarea style="width:300px;height:200px" name="description">{{product.pdescription}}</textarea>
+                </td>                
+            </tr>
+            <tr>
+                <td>熱銷數量：</td>
+                <td>
+                    <input type="text" value="{{product.hot}}" name="hot">
+                </td>   
+            </tr>
+            <tr align="center">
+                <td colspan="2">
+                    <div class="button-container">
+                    <input type="button" value="上一頁" onclick="window.location='/seller_manage/product/'" >
+                    <input type="submit" name="submit" id="submit" value="更新資料">
+                    </div>
+                </td>
+            </tr>
+            <tr align="center">
+                <td colspan="2" style="color:rgb(154, 47, 47)">
+                    {{message}}
+                </td>
+            </tr>
+        </table>
+        </form>
+        
+    </div>
+{% endblock %}
+{% block member %}
+<span  style=" margin-right: 10px;"><a href="/member/index/">會員福利</a></span>
+{% endblock %}

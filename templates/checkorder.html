@@ -1,0 +1,288 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_styles %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <style>
+        .h{
+            position: relative;
+            top:-7px
+        }
+        .mail1{
+            position: relative;
+            top:15px;
+            left: -5px;
+        }
+        .contentus{
+            font-size: 24px;
+            color:rgb(54, 54, 54)
+        }
+        .contentus-c{
+            color:rgb(168, 8, 8);
+        }
+        .button {
+                display: flex;                /* 使用 Flexbox 讓按鈕排成一行 */
+                justify-content: center;      /* 可以根據需要調整位置，比如居中對齊 */
+                gap: 30px;                    /* 設定按鈕之間的距離，這裡設為 20px，你可以根據需要調整 */
+                width: 100%;                  /* 容器寬度佔滿父容器 */
+                align-items: center;          /* 按鈕垂直居中對齊 */
+            }
+
+        .button input {
+            padding: 10px 20px;           /* 按鈕的內邊距 */
+            font-size: 13px;               /* 按鈕文字大小 */
+            border: 1px solid #ccc; 
+            border-radius: 5px;
+            transition: all 0.3s ease; 
+            cursor: pointer;   
+        }
+        .button input:hover {
+            background-color:#57889f;
+            color:#f6f6f6;
+            
+        }
+        .member a{
+            font-size: 14px;
+        }
+        .member a:hover{
+            color:rgb(168, 8, 8);
+        }
+        .order_unit{
+            color:rgb(63, 63, 63);
+            font-size: 14px;
+            color:rgb(168, 8, 8);
+            position :relative;
+        }
+        .order_price{
+            color:rgb(168, 8, 8);
+            font-size: 15px;
+            position: relative;
+            right: 3px;
+            
+        }
+        hr{
+            border: 1px solid rgb(95, 94, 94);
+        }
+        .serial_number{
+            font-size: 13px;
+            position: relative;
+            top:0px;
+            right:-45px;
+            color:rgb(74, 74, 74)
+        }
+        .order_message {
+            color:rgb(168, 8, 8);
+            font-size: 13px;
+            position:relative;
+            left:30px;
+            top:-5px
+        }
+        .logout{
+            width:23px;
+            height: 23px;
+            position:absolute;
+            right: 100px;  /* 距離右邊 10px */
+            bottom: 10px; /* 距離底部 10px */
+            transition: all 0.3s ease; /* 平滑過渡效果 */
+            cursor: pointer;          /* 設置鼠標為手指形狀 */
+        }
+        .title{
+            transform: translate(-50%, -50%);  /* 完全居中，調整偏移 */
+            color: rgb(61, 61, 61);  /* 設置文字顏色，使其能夠在圖片上可見 */
+            font-size: 28px;  /* 根據需要設置文字大小 */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);  /* 可選，給文字添加陰影，使其更加顯眼 */
+            white-space: nowrap;
+            letter-spacing: 2px;
+        }
+    </style>
+{% endblock %}
+{% block index %}
+    {% if indexfrom == 'index' %}
+    <a href="/index/" class="title"><p>Moments of Tea 一盞茶時</p></a>
+    {% elif indexfrom == 'index2'%}
+    <a href="/index2/" class="title"><p>Moments of Tea 一盞茶時</p></a>
+    {% endif %}
+{% endblock %}
+{% block login %}
+{% if indexfrom == 'index' %}
+    <a href="/login/"><img src="{%static 'images/login.jpg'%}" alt="會員登入"  class="login" ></a>
+    <a href="/cart/"><img src="{%static 'images/shopping.jpg'%}" alt="購物車"  class="cart" ></a>
+    <a href="/mail/index/"><img src="{%static 'images/mail.png'%}" alt="mail"  class="mail" ></a>
+    {% elif indexfrom == 'index2'%}
+    <a href="/logout/"><img src="{%static 'images/logout.jpg'%}" alt="登出"  class="logout" ></a>
+    <a href="/cart2/"><img src="{%static 'images/shopping.jpg'%}" alt="購物車"  class="cart" ></a>
+    <a href="/mail/index2/"><img src="{%static 'images/mail.png'%}" alt="mail"  class="mail" ></a>
+    {% endif %}
+{% endblock %}
+
+{% block unit %}
+{% if indexfrom == 'index' %}
+<a href="/hotproduct/index/" class="unit-button"><strong>熱銷商品</strong></a>
+<a href="/tea/default/" class="unit-button"><strong>挑選茶葉</strong></a>
+<a href="/orderlogin/index/" class="unit-button"><strong>訂單查詢</strong></a>
+<a href="/aboutus/index/" class="unit-button"><strong>關於我們</strong></a>
+{% elif indexfrom == 'index2'%}
+<a href="/hotproduct/index2" class="unit-button"><strong>熱銷商品</strong></a>
+<a href="/tea2/default/" class="unit-button"><strong>挑選茶葉</strong></a>
+<a href="/orderlogin/index2/" class="unit-button"><strong>訂單查詢</strong></a>
+<a href="/aboutus/index2/" class="unit-button"><strong>關於我們</strong></a>
+{% endif %}
+{% endblock %}
+
+{% block content %}
+{% if indexfrom == 'index' %}
+    <span class="h">
+        <a href="/index/" ><img src="/static/images/home.jpg" alt="首頁" width="27" height="27" style="margin-top: 7px;"></a>
+        <p style="position: relative; top: -9px; display: inline;">></p>&nbsp;
+        <a href="/orderlogin/index/" style="position: relative; top: -7px; display: inline;">
+            <span >訂單查詢</span>
+        </a>
+        <p style="position: relative; top: -9px; display: inline;">></p>&nbsp;
+        <a href="/checkorder/{{order.id}}/index/" style="position: relative; top: -7px; display: inline;">
+            <span >訂單資料</span>
+        </a>
+    </span>
+    <div>
+        <table border="1" width="50%" align="center" cellspacing="0" >
+            <form action="." method="POST" name="form1">
+                {% csrf_token %}
+            <tr align="center" class="contentus">
+                <td colspan="5" style="border-bottom: none; ">
+                    <span style="position:relative;top:5px"><strong>訂單資料</strong></span>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="5" style="border-top: none; border-bottom: none;"><hr /></td>
+            </tr>
+            <tr align="center">
+                <td colspan="5"style="border-top: none; border-bottom: none;">
+                    <span class="order_message">（ 如若訂單有問題，請點擊右上方信件圖示聯絡客服，我們將盡快為您處理！）</span>
+                    <span class="serial_number"><strong>訂單編號：{{order.id}}</strong></span>
+                </td>
+            <tr align="center">
+                <td><strong>商品照片</strong></td>
+                <td><strong>商品名稱</strong></td>
+                <td><strong>單價</strong></td>
+                <td><strong>數量</strong></td>
+                <td><strong>價格</strong></td>
+            </tr>
+            {% for detail in details %}
+            <tr align="center">
+                <td ><img src='/static/images/{{detail.pimage}}' width="100" height="100"></td>
+                <td >{{detail.pname}}</td>
+                <td>{{detail.unitprice}}</td>
+                <td>{{detail.quantity}}</td>
+                <td>{{detail.total}}</td>
+            </tr>
+            {% endfor %}
+            <tr></tr>
+            <tr align="right">
+                <td colspan="5">
+                    <span class="order_unit" style="right:20px">小計：</span><span class="order_price">$ {{order.total}}</span>
+                </td>
+            </tr>
+            <tr align="right">
+                <td colspan="5">
+                    <span class="order_unit" style="right:30px">運費：</span><span class="order_price">$ {{order.shipping}}</span>
+                </td>
+            </tr>
+            <tr align="right">
+                <td colspan="5">
+                    <span class="order_unit" style="right:10px">總金額：</span><span class="order_price">$ {{order.grandtotal}}</span>
+                </td>
+            </tr>
+            </tr>
+            <tr>
+                <td colspan="5">
+                    <span class="button">
+                    <input type="button" name="home" value="回首頁"  onclick="window.location='/index/'">
+                    </span>
+                </td>
+            </tr>
+        </form>
+        </table>
+        <br/><br/><br/><br/>
+    </div>
+
+{% elif indexfrom == 'index2' %}
+<span class="h">
+    <a href="/index2/" ><img src="/static/images/home.jpg" alt="首頁" width="27" height="27" style="margin-top: 7px;"></a>
+    <p style="position: relative; top: -9px; display: inline;">></p>&nbsp;
+    <a href="/orderlogin/index2/" style="position: relative; top: -7px; display: inline;">
+        <span >訂單查詢</span>
+    </a>
+    <p style="position: relative; top: -9px; display: inline;">></p>&nbsp;
+    <a href="/checkorder/{{order.id}}/index2/" style="position: relative; top: -7px; display: inline;">
+        <span >訂單資料</span>
+    </a>
+</span>
+<div>
+    <table border="1" width="50%" align="center" cellspacing="0" >
+        <form action="." method="POST" name="form1">
+            {% csrf_token %}
+        <tr align="center" class="contentus">
+            <td colspan="5" style="border-bottom: none; ">
+                <span style="position:relative;top:5px"><strong>訂單資料</strong></span>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="5" style="border-top: none; border-bottom: none;"><hr /></td>
+        </tr>
+        <tr align="center">
+            <td colspan="5"style="border-top: none; border-bottom: none;">
+                <span class="order_message">（ 如若訂單有問題，請點擊右上方信件圖示聯絡客服，我們將盡快為您處理！）</span>
+                <span class="serial_number"><strong>訂單編號：{{order.id}}</strong></span>
+            </td>
+        <tr align="center">
+            <td><strong>商品照片</strong></td>
+            <td><strong>商品名稱</strong></td>
+            <td><strong>單價</strong></td>
+            <td><strong>數量</strong></td>
+            <td><strong>價格</strong></td>
+        </tr>
+        {% for detail in details %}
+        <tr align="center">
+            <td ><img src='/static/images/{{detail.pimage}}' width="100" height="100"></td>
+            <td >{{detail.pname}}</td>
+            <td>{{detail.unitprice}}</td>
+            <td>{{detail.quantity}}</td>
+            <td>{{detail.total}}</td>
+        </tr>
+        {% endfor %}
+        <tr></tr>
+        <tr align="right">
+            <td colspan="5">
+                <span class="order_unit" style="right:20px">小計：</span><span class="order_price">$ {{order.total}}</span>
+            </td>
+        </tr>
+        <tr align="right">
+            <td colspan="5">
+                <span class="order_unit" style="right:30px">運費：</span><span class="order_price">$ {{order.shipping}}</span>
+            </td>
+        </tr>
+        <tr align="right">
+            <td colspan="5">
+                <span class="order_unit" style="right:10px">總金額：</span><span class="order_price">$ {{order.grandtotal}}</span>
+            </td>
+        </tr>
+        </tr>
+        <tr>
+            <td colspan="5">
+                <span class="button">
+                <input type="button" name="home" value="回首頁"  onclick="window.location='/index2/'">
+                </span>
+            </td>
+        </tr>
+    </form>
+    </table>
+    <br/><br/><br/><br/>
+</div>
+{% endif  %}
+{% endblock %}
+{% block member %}
+    {% if indexfrom == 'index' %}
+    <span  style=" margin-right: 10px;"><a href="/member/index">會員福利</a></span>
+    {% elif indexfrom == 'index2' %}
+    <span  style=" margin-right: 10px;"><a href="/member/index2/">會員福利</a></span>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+    <head>
+        <meta charset="UTF-8">
+        <title>茶葉專賣店-一盞茶時</title>
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        {% block extra_styles %}
+        {% endblock %}
+    </head>
+    <style>
+        footer{
+            background-color:#b2c7d1;
+            padding: 40px 20px;
+            text-align: center;
+        }
+        .unit-button:hover{
+            color:#1a5214;
+            font-size: 16px;
+        }
+    </style>
+    <body>
+        <div class="logo">  
+            {% block index %}
+            <a href="/index/" style="text-decoration: none;font-family: 'Pacifico', cursive;color:rgb(42, 94, 38);"><p>Moments of Tea 一盞茶時</p></a>
+            {% endblock %}
+            
+            {% block login %}
+            <a href="/login/"><img src="{%static 'images/login.jpg'%}" alt="會員登入"  class="login" ></a>
+            <a href="/cart/"><img src="{%static 'images/shopping.jpg'%}" alt="購物車"  class="cart" ></a>
+            <a href="/mail/"><img src="{%static 'images/mail.png'%}" alt="mail"  class="mail" ></a>
+            {% endblock %}
+        </div>
+            <div class="unit">
+            {% block unit %}
+            <a href="/hotproduct/" class="unit-button"><strong>熱銷商品</strong></a>
+            <a href="/tea/default/" class="unit-button"><strong>挑選茶葉</strong></a>
+            <a href="/orderlogin/index/" class="unit-button"><strong>訂單查詢</strong></a>
+            <a href="/aboutus/index" class="unit-button"><strong>關於我們</strong></a>
+            {% endblock %}
+        </div>
+        {% block content %}
+        {% endblock %}
+        <br/><br/><br/><br/><br/>   
+    </body>
+    <footer >
+        <p>&copy; 2024 Moment of tea 一盞茶時 All rights reserved.</p>
+        <p>
+            <span style=" margin-right: 10px;"><a href="/aboutus/index">關於我們</a></span>
+            <span  style=" margin-right: 10px;"><a href="/mail/index/">聯絡信箱</a></span>
+            {% block member %}
+            <span  style=" margin-right: 10px;"><a href="/member/index">會員福利</a></span>
+            {% endblock %}
+        </p>
+        <p style="color:rgb(75, 75, 75);font-size: 12px;">本網站用途為做專題，並無實際販售</p>
+    </footer>

@@ -1,0 +1,194 @@
+{% extends 'base.html' %}
+{% load static %}
+    {% block extra_styles %}
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+        <style>
+            .button {
+                width: 160px;  /* 設定寬度 */
+                height: 40px; 
+                color: white;  /* 文字顏色 */
+                background-color: #6a8d6c;  /* 背景顏色 */
+                border: none;  /* 移除默認的邊框 */
+                padding: 10px 20px;  /* 增加內邊距 */
+                cursor: pointer;  /* 讓鼠標變為手形 */
+                text-align: center; /* 文字居中 */
+                display: inline-block; /* 保持按鈕形狀 */
+                transition: all 0.3s ease; /* 添加過渡效果，讓變化更加平滑 */
+                position: relative;
+                top: 30px;
+            }
+            /* 滑動到按鈕上的效果 */
+            .button:hover {
+                background-color: #43613d;  /* 改變背景顏色 */
+                text-decoration: underline;  /* 增加底線 */
+            }
+            .con p{
+                position: relative;
+                left:10px;
+                
+            }
+            input[type="number"] {
+                -moz-appearance: textfield; /* 移除 Firefox 的上下箭頭 */
+                -webkit-appearance: none; /* 移除 Chrome 和 Safari 的上下箭頭 */
+                appearance: none; /* 通用移除上下箭頭 */
+            }
+
+            input[type="number"]::-webkit-inner-spin-button,
+            input[type="number"]::-webkit-outer-spin-button {
+                -webkit-appearance: none; /* 移除 Chrome、Safari 上的箭頭 */
+                margin: 0; /* 移除可能的額外間距 */
+            }
+
+            input[type="number"]::-moz-inner-spin-button,
+            input[type="number"]::-moz-outer-spin-button {
+                appearance: none; /* 移除 Firefox 上的箭頭 */
+                margin: 0; /* 移除可能的額外間距 */
+            }
+            .num{
+                position: relative;
+                top: 0px;
+                left: -70px;
+            }
+            .numbutton{
+                position: relative;
+                left: 20px;
+                display: inline; 
+                align-items: center; 
+                border: 1px solid #ccc; 
+                border-radius: 5px; 
+                width: 120px; 
+                height: 40px;
+            }
+            .num p{
+                font-size: 13px;
+                color:#1c1c1c;
+            }
+            .logout{
+                width:23px;
+                height: 23px;
+                position:absolute;
+                right: 100px;  /* 距離右邊 10px */
+                bottom: 10px; /* 距離底部 10px */
+                transition: all 0.3s ease; /* 平滑過渡效果 */
+                cursor: pointer;          /* 設置鼠標為手指形狀 */
+            }
+            .title{
+                transform: translate(-50%, -50%);  /* 完全居中，調整偏移 */
+                color: rgb(61, 61, 61);  /* 設置文字顏色，使其能夠在圖片上可見 */
+                font-size: 28px;  /* 根據需要設置文字大小 */
+                text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);  /* 可選，給文字添加陰影，使其更加顯眼 */
+                white-space: nowrap;
+                letter-spacing: 2px;
+            }
+        </style>
+    {% endblock %}
+    {% block index %}
+    <a href="/index2/" class="title"><p>Moments of Tea 一盞茶時</p></a>
+    {% endblock %}
+    {% block login %}
+    <a href="/logout/"><img src="{%static 'images/logout.jpg'%}" alt="登出"  class="logout" ></a>
+    <a href="/cart2/"><img src="{%static 'images/shopping.jpg'%}" alt="購物車"  class="cart" ></a>
+    <a href="/mail/index2/"><img src="{%static 'images/mail.png'%}" alt="mail"  class="mail" ></a>
+    {% endblock %}
+    {% block unit %}
+    <a href="/hotproduct/index2/" class="unit-button"><strong>熱銷商品</strong></a>
+    <a href="/tea2/default" class="unit-button"><strong>挑選茶葉</strong></a>
+    <a href="/orderlogin/index2/" class="unit-button"><strong>訂單查詢</strong></a>
+    <a href="/aboutus/index2/" class="unit-button"><strong>關於我們</strong></a>
+    {% endblock %}
+    {% block content %}
+        <span>
+            <a href="/index2/" ><img src="/static/images/home.jpg" alt="首頁" width="27" height="27" style="margin-top: 7px;"></a>
+            <p style="position: relative; top: -9px; display: inline;">></p>&nbsp;
+            <a href="/{{now_path}}/" style="position: relative; top: -7px; display: inline;">{{now_page}}</a>
+            <p style="position: relative; top: -9px; display: inline;">></p>&nbsp;
+            <a href="/detail2/{{product.id}}" style="position: relative; top: -7px; display: inline;">{{product.pname}}</a>
+        </span>
+        <table border="0" width="80%" align="center" cellpadding="10" cellspacing="50"  style="background-color: #e7e7e7;" class="con">
+            <td>
+                <img src="/static/images/{{product.pimage}}" alt="{{product.pname}}" width="350" height="350">
+            </td>
+            <td>
+                <p style="font-family: var(--font-family-title);font-size: 24px;"><strong>{{product.pname}}</strong></p>
+                <p style="color: #858587;font-size:15px;">{{product.pdescription}}</p>
+                <hr/>
+                <p style="font-size: 13px;color:#1c1c1c">會員售價：</p>
+                <p style="font-size:20px ;color: #758891;">NT ${{product.member_price}}</p>
+                <span style="position: relative; top: 0px; left:70px">
+                    <form action="/addcart_m/detailadd/{{product.id}}/" method="POST" name="form1">
+                    {% csrf_token %}
+                <div class="num">
+                    <p style="display: inline;">數量：</p>
+                    <div  class='numbutton'>
+                        <!-- 減少按鈕 -->
+                        <button type="button" id="decrease" style="flex: 1; text-align: center; border: none; background: none; cursor: pointer;">➖</button>
+                        <!-- 數量輸入框 -->
+                        <input type="number" id="quantity" name="quantity" value="1" min="1" 
+                               style="width: 50px; text-align: center; border: none; outline: none; -moz-appearance: textfield; -webkit-appearance: none; appearance: none;background-color:#f6f4f4;">
+                        <!-- 增加按鈕 -->
+                        <button type="button" id="increase" style="flex: 1; text-align: center; border: none; background: none; cursor: pointer;">➕</button>
+                    </div>
+                </div>
+                    <div style="display: flex;">
+                    <input type="submit" class="button" value="加入購物車" onclick="showAlert(event)" >&nbsp;&nbsp;
+                    <button class="button" onclick="window.location.href='/order/';">立即購買</button>
+                </div>
+                </form>
+                </span>
+            </td>
+        </table>
+        <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.1/dist/sweetalert2.min.css" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script>
+            const decreaseButton = document.getElementById('decrease');
+            const increaseButton = document.getElementById('increase');
+            const quantityInput = document.getElementById('quantity');
+        
+            // 減少數量
+            decreaseButton.addEventListener('click', () => {
+                let currentValue = parseInt(quantityInput.value, 10) || 1;
+                if (currentValue > 1) {
+                    quantityInput.value = currentValue - 1;
+                }
+            });
+        
+            // 增加數量
+            increaseButton.addEventListener('click', () => {
+                let currentValue = parseInt(quantityInput.value, 10) || 1;
+                quantityInput.value = currentValue + 1;
+            });
+            function showAlert(event) {
+                // 阻止表單默認提交
+                event.preventDefault();
+
+                // 顯示 SweetAlert2 提示框
+                Swal.fire({
+                    title: '成功!',
+                    text: '商品已加入購物車！',
+                    icon: 'success',
+                    confirmButtonText: '確定'
+                }).then((result) => {
+                    // 當用戶點擊"確定"後，提交表單
+                    if (result.isConfirmed) {
+                        // 提交表單
+                        document.forms['form1'].submit();
+                    }
+                });
+            }
+            function confirmLogout() {
+                Swal.fire({
+                        title: '已登出',
+                        icon: 'info',
+                        confirmButtonText: '了解'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            // 當用戶點擊「了解」後，跳轉到指定網址
+                            window.location.href = "/index/";
+                        }
+                    });
+                }
+        </script>
+    {% endblock %}
+    {% block member %}
+    <span  style=" margin-right: 10px;"><a href="/member/index2/">會員福利</a></span>
+    {% endblock %}

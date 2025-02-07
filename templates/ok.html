@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+{% load static %}
+    {% block extra_styles %}
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+        <style>
+            .cart1{
+                position: relative;
+                top: 10px;
+            }
+            .step  {
+                background-color: rgba(166, 128, 128, 0.799);
+                
+            }
+            .shoplist{
+                font-size: 22px;
+                position: relative;
+                left: -210px;
+                top: -10px;
+                color:rgb(199, 197, 197);
+            }
+            .content{
+                position:relative;
+                top:50px;
+            }
+            .title{
+                transform: translate(-50%, -50%);  /* 完全居中，調整偏移 */
+                color: rgb(61, 61, 61);  /* 設置文字顏色，使其能夠在圖片上可見 */
+                font-size: 28px;  /* 根據需要設置文字大小 */
+                text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);  /* 可選，給文字添加陰影，使其更加顯眼 */
+                white-space: nowrap;
+                letter-spacing: 2px;
+            }
+            .title-order{
+                transform: translate(0%, 0%);  /* 完全居中，調整偏移 */
+                color: rgb(61, 61, 61);  /* 設置文字顏色，使其能夠在圖片上可見 */
+                font-size: 28px;  /* 根據需要設置文字大小 */
+                text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);  /* 可選，給文字添加陰影，使其更加顯眼 */
+                white-space: nowrap;
+                letter-spacing: 2px;
+            }
+        </style>
+    {% endblock %}
+    {% block index %}
+    <a href="/index/" class="title"><p>Moments of Tea 一盞茶時</p></a>
+    {% endblock %}
+    {% block login %}
+    <a href="/login/"><img src="{%static 'images/login.jpg'%}" alt="會員登入"  class="login" ></a>
+    <a href="/cart/"><img src="{%static 'images/shopping.jpg'%}" alt="購物車"  class="cart" ></a>
+    <a href="/mail/index/"><img src="{%static 'images/mail.png'%}" alt="mail"  class="mail" ></a>
+    {% endblock %}
+    {% block unit %}
+    <a href="/hotproduct/index/" class="unit-button"><strong>熱銷商品</strong></a>
+    <a href="/tea/default/" class="unit-button"><strong>挑選茶葉</strong></a>
+    <a href="/orderlogin/index/" class="unit-button"><strong>訂單查詢</strong></a>
+    <a href="/aboutus/index/" class="unit-button"><strong>關於我們</strong></a>
+    {% endblock %}
+    {% block content %}
+    <span>
+        <a href="/index/" ><img src="/static/images/home.jpg" alt="首頁" width="27" height="27" style="margin-top: 7px;"></a>
+        <p style="position: relative; top: -9px; display: inline;">></p>&nbsp;
+        <a href="/cart/" style="position: relative; top: -7px; display: inline;">
+            <img src="/static/images/shopping.jpg/" alt="購物車" width="30" height="30" class="cart1">
+            購物車
+        </a>
+    </span>
+    <span align="center">
+        <p class="step"> 
+                <span style="position: relative;left:-50px;top:3px">
+                    <img src="/static/images/step1d.jpg" width="110" height="35" alt="購物清單">
+                </span>
+                <span style="position: relative; right:-165px;top:-8px;color:rgb(58, 57, 57)">▶</span>&nbsp; 
+                <span style="position: relative;left:-20px;top: 3px;">
+                    <img src="/static/images/step2d.jpg" width="140" height="35" alt="填寫付款資料">
+                </span>
+                <span style="position: relative; left: -200px;top:-9px;color:rgb(58, 57, 57)">▶</span>&nbsp;
+                <span style="position: relative;top: 2px;">
+                    <img src="/static/images/step3.jpg" width="100" height="35" alt="完成訂購"></span>
+        </p> 
+        <p>
+            <div class="content">
+                <p class="title-order">訂購完成</p>
+                <p class="subject">感謝您的訂購！</p>
+                <p class="desc">親愛的 <strong>{{customname1}}</strong> (先生 / 小姐)，您已經成功的完成訂購程序，我們將儘快把您選購的商品郵寄給您！ 再次感謝您支持。<br />
+                <a href="/checkorder/{{order_id}}/index">&lt;詳細內容請按此&gt;</a></p>
+              </div>
+        </p>
+    </span>
+    <div style="margin-bottom: 100px;"> 
+    </div>
+    {% endblock %}
+    {% block member %}
+    <span  style=" margin-right: 10px;"><a href="/member/index">會員福利</a></span>
+    {% endblock %}
