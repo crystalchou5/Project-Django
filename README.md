@@ -19,7 +19,7 @@ https://github.com/user-attachments/assets/6cc3a41e-205f-4cb8-b61d-ede8c3a9650f
 
 <br/>
 
-###### 使用第三方登入會員介面
+###### 透過第三方登入會員介面
 
 
 
@@ -59,6 +59,17 @@ https://github.com/user-attachments/assets/78f7812b-2f3e-453c-9fb8-4faef00a2370
 
 
 <img width="366" alt="信件" src="https://github.com/user-attachments/assets/5a6e243f-f82a-46a1-aca9-290ea56d11ea" />
+
+
+
+<br/>
+
+###### 設置賣家管理介面，方便管理商品及訂單
+
+
+
+
+https://github.com/user-attachments/assets/9d72efd8-a850-4df0-93c8-d3477afe9a34
 
 
 
